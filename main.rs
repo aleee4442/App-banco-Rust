@@ -3,6 +3,8 @@
 use std::io::{self, Write};
 use rand::Rng;
 
+
+
 // Estructura de la persona con su nombre y telefono
 struct Persona{
     nombre: String,
