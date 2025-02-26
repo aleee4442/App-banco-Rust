@@ -1,17 +1,10 @@
 // Libreria utilziada para leer los imputs del usuario
-// use std::io;
-use std::io::{self, Write};
-use rand::Rng;
-
-
+use std::io;
 
 // Estructura de la persona con su nombre y telefono
 struct Persona{
     nombre: String,
     telefono: Option<String>,
-    tarjeta: Option<String>,
-    edad: u32
-    
 }
 
 // Impl con las funciones relacionadas con Persona
@@ -23,17 +16,12 @@ impl Persona {
             Some(tel) => println!("Telefono: {}", tel),
             None => println!("Telefono: No tiene teléfono"),
         }
-        println!("Tarjeta: {:?}", self.tarjeta);
-        println!("Edad: {}", self.edad);
     }
     // Funcion para aniadir tantos usuarios como quieras
     fn new_user()-> Persona{ 
         let mut nombre = String::new();
-        let mut telefono:Option<String> = None;
-        let mut tarjeta = None;
-        let mut edad = String::new();
-        let mut prueba = String::new();
-        
+        let mut telefono = String::new();
+
         println!("Introduce tu nombre");
         io::stdin().read_line(&mut nombre)
         .expect("Error al leer la entrada");
@@ -52,57 +40,9 @@ impl Persona {
             Some(telefono)
         };
 
-        println!("Tienes alguna tarjeta ya creada(Y/N)");
-        io::stdin().read_line(&mut prueba)        
-        .expect("Failed to read line");
-        if prueba == "Y" || prueba == "y"{
-            tarjeta = leer_entrada("Introduce la tarjeta")
-        }else{
-            println!("Generando Tarjeta");
-            tarjeta = crear_tarjeta()
-        }        
-
-        println!("Introduce tu edad");
-        io::stdin().read_line(&mut edad)        
-        .expect("Failed to read line");
-
-        // pasar de string a numero
-        let edad = edad.trim().parse::<u32>().expect("Error, numero no introducido");
-
-        Persona{nombre,telefono, tarjeta, edad}
+        Persona{nombre,telefono}
     }
 
-    fn crear_tarjeta()-> Option<String>{
-        let mut rng = rand::rng(); // Generador de números aleatorios
-
-        // Crear un vector vacío para almacenar los 16 números aleatorios
-        let mut digits: Vec<u32> = Vec::new();
-
-        for _ in 0..16{
-            let digit:u32 = rng.random_range(0..10);
-            digits.push(digit);
-        }
-        
-        // Convertir los dígitos a un solo número concatenado
-        let number: String = digits.iter().map(|&digit| digit.to_string()).collect();
-        number
-    }
-
-}
-
-fn leer_entrada(prompt: &str) -> Option<String> {
-    print!("{}", prompt);
-    io::stdout().flush().unwrap(); // Asegura que el mensaje se imprima antes de leer
-
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-
-    // Si la entrada no está vacía, la devolvemos como Some
-    if !input.trim().is_empty() {
-        Some(input.trim().to_string())
-    } else {
-        None
-    }
 }
 
 fn main() {
