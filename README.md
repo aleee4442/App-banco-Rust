@@ -7,30 +7,27 @@
 ## Descripción
 
 Este proyecto es una aplicación de banco desarrollada en Rust que permite la gestión de usuarios con funcionalidades como:
-
-Creación de cuentas.
-
-Consulta de saldo e información personal.
-
-Gestión de saldo (añadir o retirar dinero).
+- Creación de cuentas.
+- Consulta de saldo e información personal.
+- Gestión de saldo (añadir o retirar dinero).
 
 ## Características
 
--Crear nuevos usuarios con:
-  -Nombre
-  -Teléfono (opcional)
-  -Número de tarjeta (generado aleatoriamente si no se proporciona)
-  -Edad
-  -Saldo inicial
--Consultar información del usuario.
--Ver saldo disponible.
--Añadir o retirar saldo.
--Interfaz de línea de comandos intuitiva.
+- Crear nuevos usuarios con:
+  - Nombre
+  - Teléfono (opcional)
+  - Número de tarjeta (generado aleatoriamente si no se proporciona)
+  - Edad
+  - Saldo inicial
+- Consultar información del usuario.
+- Ver saldo disponible.
+- Añadir o retirar saldo.
+- Interfaz de línea de comandos intuitiva.
 
 ## Requisitos
 Para ejecutar este proyecto, necesitarás:
--Rust instalado en tu sistema.
--Cargo para compilar y ejecutar el proyecto.
+- Rust instalado en tu sistema.
+- Cargo para compilar y ejecutar el proyecto.
 
 ## Instalación
 ### Clonar el repositorio
@@ -43,11 +40,11 @@ cargo run
 ## Uso
 
 Al ejecutar la aplicación, se mostrará un menú con las siguientes opciones:
--Agregar usuario
--Ver saldo de un usuario
--Ver información del usuario
--Añadir/Quitar saldo
--Salir
+- Agregar usuario
+- Ver saldo de un usuario
+- Ver información del usuario
+- Añadir/Quitar saldo
+- Salir
 
 Introducir la opción deseada y seguir las instrucciones en pantalla.
 
@@ -55,8 +52,8 @@ Introducir la opción deseada y seguir las instrucciones en pantalla.
 > Puedes probar con diferentes usuarios y manejar múltiples cuentas simultáneamente.
 
 ## Librerías utilizadas
--std::io para entrada y salida de datos.
--rand para generación de números aleatorios.
--std::thread y std::time::Duration para pausas en la ejecución.
+- std::io para entrada y salida de datos.
+- rand para generación de números aleatorios.
+- std::thread y std::time::Duration para pausas en la ejecución.
 
 Este proyecto me ha servido para comprender más a fondo como funciona rust teniendo que investigar bastante por mi cuenta
