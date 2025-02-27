@@ -23,9 +23,9 @@ impl Persona {
             Some(tel) => println!("Telefono: {}", tel), // Si tiene telefono se imprime
             None => println!("Telefono: No tiene teléfono"), // Si no tiene telefono se imprime lo siguiente
         }
-        println!("Tarjeta: {:?}", self.tarjeta); // Imprimir tarjeta
+        println!("Tarjeta: {}", self.tarjeta); // Imprimir tarjeta
         println!("Edad: {}", self.edad); // Imprimir edad
-        println!("Saldo: {:.2}€", self.saldo); // Imprimir saldo
+        println!("Saldo: {:.3}€", self.saldo); // Imprimir saldo con 3 decimales
     }
     // Funcion para aniadir tantos usuarios como quieras
     fn new_user()-> Persona{ 
@@ -49,9 +49,11 @@ impl Persona {
         println!("Tienes alguna tarjeta ya creada(Y/N)");
         io::stdin().read_line(&mut prueba)        
         .expect("Failed to read line");
-        if prueba == "Y" || prueba == "y"{
-            io::stdin().read_line(&mut nombre) // Si tiene tarjeta leerla y guardarla
+        if prueba.trim() == "Y" || prueba.trim() == "y"{
+            println!("Introduce tu tarjeta");
+            io::stdin().read_line(&mut tarjeta) // Si tiene tarjeta leerla y guardarla
             .expect("Error al leer la entrada");
+            tarjeta = tarjeta.trim().to_string();
         }else{
             println!("Generando Tarjeta"); // Si no tiene tarjeta generar una
             tarjeta = crear_tarjeta();
@@ -198,13 +200,13 @@ fn menu(usuarios: &mut Vec<Persona>) -> u32 {
                     println!("Quieres añadir (1) o quitar saldo(2)?");
                     let mut seleccion_saldo = String::new();
                     io::stdin().read_line(&mut seleccion_saldo).expect("Failed to read line");
-                    if seleccion_saldo == "1" {
+                    if seleccion_saldo.trim() == "1" {
                         println!("Introduce el importe a añadir");
                         let mut importe = String::new();
                         io::stdin().read_line(&mut importe).expect("Failed to read line");
                         usuarios[seleccion - 1].saldo += importe.trim().parse::<f64>().expect("Error, numero no introducido");
                         usuarios[seleccion - 1].mostrar_saldo();
-                    } else if seleccion_saldo == "2" {
+                    } else if seleccion_saldo.trim() == "2" {
                         println!("Introduce el importe a quitar");
                         let mut importe = String::new();
                         io::stdin().read_line(&mut importe).expect("Failed to read line");
